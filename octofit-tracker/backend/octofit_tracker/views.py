@@ -1,9 +1,14 @@
+import ssl
+from django.http import JsonResponse
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.shortcuts import render
 from .serializers import UserSerializer, TeamSerializer, ActivitySerializer, LeaderboardSerializer, WorkoutSerializer
 from .models import User, Team, Activity, Leaderboard, Workout
+
+# Disable SSL certificate verification for development purposes
+ssl._create_default_https_context = ssl._create_unverified_context
 
 @api_view(['GET'])
 def api_root(request, format=None):

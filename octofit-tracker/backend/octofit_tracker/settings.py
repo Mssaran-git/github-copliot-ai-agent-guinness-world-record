@@ -93,6 +93,14 @@ if 'CODESPACE_NAME' in os.environ:
     DATABASES['default']['NAME'] += CODESPACE_SUFFIX
 
 
+# Add a dynamic base URL for the API if running in a GitHub Codespace
+if 'CODESPACE_NAME' in os.environ:
+    CODESPACE_SUFFIX = f"-{os.environ['CODESPACE_NAME']}"
+    API_BASE_URL = f"https://{os.environ['CODESPACE_NAME']}-8000.app.github.dev/api/"
+else:
+    API_BASE_URL = "http://localhost:8000/api/"
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -153,6 +161,5 @@ CORS_ALLOW_HEADERS = [
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
     ],
 }

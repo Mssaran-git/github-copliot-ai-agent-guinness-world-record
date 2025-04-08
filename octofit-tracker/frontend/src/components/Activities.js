@@ -12,9 +12,9 @@ function Activities() {
 
   return (
     <div className="container">
-      <h1>Activities</h1>
-      <table className="table table-striped">
-        <thead>
+      <h1 className="text-center">Activities</h1>
+      <table className="table table-striped table-hover">
+        <thead className="table-dark">
           <tr>
             <th>User</th>
             <th>Activity Type</th>

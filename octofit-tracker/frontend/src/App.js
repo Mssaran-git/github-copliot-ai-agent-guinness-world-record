@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
+import Activities from './components/Activities';
+import Leaderboard from './components/Leaderboard';
 
 function App() {
   return (
@@ -20,15 +22,6 @@ function App() {
                 <li className="nav-item">
                   <Link className="nav-link" to="/leaderboard">Leaderboard</Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/teams">Teams</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/users">Users</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/workouts">Workouts</Link>
-                </li>
               </ul>
             </div>
           </div>
@@ -37,10 +30,7 @@ function App() {
           <Routes>
             <Route path="/activities" element={<Activities />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/teams" element={<Teams />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/workouts" element={<Workouts />} />
-            <Route path="/" element={<h1>Welcome to OctoFit Tracker</h1>} />
+            <Route path="/" element={<h1 className="text-center">Welcome to OctoFit Tracker</h1>} />
           </Routes>
         </div>
       </div>

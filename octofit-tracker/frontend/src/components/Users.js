@@ -4,9 +4,7 @@ function Users() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const apiBaseUrl = 'https://congenial-robot-pwrx4jxpp9c6vjv-8000.app.github.dev';
-    const endpointSuffix = '/api/users/';
-    fetch(`${apiBaseUrl}${endpointSuffix}`)
+    fetch('https://congenial-robot-pwrx4jxpp9c6vjv-8000.app.github.dev/api/users/')
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(error => console.error('Error fetching users:', error));

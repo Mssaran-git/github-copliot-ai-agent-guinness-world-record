@@ -1,6 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.shortcuts import render
 from .serializers import UserSerializer, TeamSerializer, ActivitySerializer, LeaderboardSerializer, WorkoutSerializer
 from .models import User, Team, Activity, Leaderboard, Workout
 
@@ -14,6 +15,10 @@ def api_root(request, format=None):
         'leaderboard': base_url + 'api/leaderboard/',
         'workouts': base_url + 'api/workouts/',
     })
+
+# Add a new view to render the homepage template
+def homepage(request):
+    return render(request, 'index.html')
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()

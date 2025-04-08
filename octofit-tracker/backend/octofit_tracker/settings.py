@@ -148,3 +148,11 @@ CORS_ALLOW_HEADERS = [
     'content-type',
     'authorization',
 ]
+
+# Add Django REST Framework configuration
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+}

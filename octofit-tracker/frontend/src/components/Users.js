@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Users() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const apiBaseUrl = 'https://congenial-robot-pwrx4jxpp9c6vjv-8000.app.github.dev';
+    const endpointSuffix = '/api/users/';
+    fetch(`${apiBaseUrl}${endpointSuffix}`)
+      .then(response => response.json())
+      .then(data => setUsers(data))
+      .catch(error => console.error('Error fetching users:', error));
+  }, []);
+
   return (
     <div>
-      <h1>Users Component</h1>
-      <p>This is the Users component.</p>
+      <h1>Users</h1>
+      <ul>
+        {users.map(user => (
+          <li key={user._id}>{user.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
